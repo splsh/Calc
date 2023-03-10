@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="noBueno:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/noBueno_jar</output-path>
+    <root id="archive" name="noBueno.jar">
+      <element id="module-output" name="noBueno" />
+    </root>
+  </artifact>
+</component>
