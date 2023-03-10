@@ -28,7 +28,6 @@ public class Main {
             temp[0] = map.get(temp[0]).toString();
             temp[2] = map.get(temp[2]).toString();
             roman = true;
-            System.out.println(temp[0] + " " + temp[2]);
         }
         int firstNumber = Integer.parseInt(temp[0]);
         int secondNumber = Integer.parseInt(temp[2]);
