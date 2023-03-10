@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-//
+// не очень хорошо изначально начал, но удалять не стал, потому что так видно как шел поток сознания.
 
     public static void main(String[] args) {
         boolean roman = false;
