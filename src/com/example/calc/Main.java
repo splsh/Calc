@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-
+//
 
     public static void main(String[] args) {
         boolean roman = false;
-        Map<String, Integer> map = new HashMap<String, Integer>();
+        Map<String, Integer> map = new HashMap<>();
         map.put("I", 1);
         map.put("II", 2);
         map.put("III", 3);
@@ -36,32 +36,22 @@ public class Main {
             throw new RuntimeException();
         }
         char operation = temp[1].charAt(0);
-        int result = 0;
-        switch (operation) {
-            case '+':
-                result = firstNumber + secondNumber;
-                break;
-            case '-':
-                result = firstNumber - secondNumber;
-                break;
-            case '*':
-                result = firstNumber * secondNumber;
-                break;
-            case '/':
-                result = firstNumber / secondNumber;
-                break;
-            default:
-                throw new RuntimeException();
-        }
-        if (roman == true & map.containsValue(result)) {
+        int result = switch (operation) {
+            case '+' -> firstNumber + secondNumber;
+            case '-' -> firstNumber - secondNumber;
+            case '*' -> firstNumber * secondNumber;
+            case '/' -> firstNumber / secondNumber;
+            default -> throw new RuntimeException();
+        };
+        if (roman & map.containsValue(result)) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 if (entry.getValue().equals(result)) {
                     System.out.println("Output \n" + entry.getKey());
                 }
             }
-        } else if (roman == false) {
+        } else if (!roman) {
             System.out.println("Output \n" + result);
-        } else if (roman == true & !map.containsValue(result)) {
+        } else if (roman & !map.containsValue(result)) {
             if (result <= 1) {
                 throw new RuntimeException();
             }
