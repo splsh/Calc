@@ -2,12 +2,11 @@ package com.example.calc;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Main {
-// не очень хорошо изначально начал, но удалять не стал, потому что так видно как шел поток сознания.
+//
 
-    public static void main(String[] args) {
+    public static String calc(String input) {
         boolean roman = false;
         Map<String, Integer> map = new HashMap<>();
         map.put("I", 1);
@@ -20,10 +19,10 @@ public class Main {
         map.put("VIII", 8);
         map.put("IX", 9);
         map.put("X", 10);
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Input");
-        String input = scanner.nextLine();
         String[] temp = input.split(" ");
+        if (temp.length > 3) {
+            throw new RuntimeException();
+        }
         if (map.containsKey(temp[0]) & map.containsKey(temp[2])) {
             temp[0] = map.get(temp[0]).toString();
             temp[2] = map.get(temp[2]).toString();
@@ -45,23 +44,42 @@ public class Main {
         if (roman & map.containsValue(result)) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 if (entry.getValue().equals(result)) {
-                    System.out.println("Output \n" + entry.getKey());
+                    return entry.getKey();
                 }
             }
         } else if (!roman) {
-            System.out.println("Output \n" + result);
+            return String.valueOf(result);
         } else if (roman & !map.containsValue(result)) {
-            if (result <= 1) {
+            if (result < 1) {
                 throw new RuntimeException();
             }
-            String [] ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-            String [] tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C"};
+            String[] ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+            String[] tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C"};
 
             int onesDigit = result % 10;
             int tensDigit = result / 10;
-            System.out.println("Output \n"  + tens[tensDigit] + ones[onesDigit]);
+            return tens[tensDigit] + ones[onesDigit];
 
         }
+        return "";
+    }
+
+    public static void main(String[] args) {
+        String test = "1 + 6";
+        String test1 = "-7 + 9";
+        String test2 = "5 * 8";
+        String test3 = "V + III";
+        String test4 = "5 + X";
+        String test5 = "X * X";
+        String test6 = "X / III";
+        String test7 = "V - X";
+        String test8 = "11 + 2";
+        String test9 = "5 + 3 + 7";
+        String test10 = "V + II + X";
+        String test11 = "9 - 9";
+        String test12 = "9 - 10";
+        String test13 = "I * I";
+        System.out.println(calc(test13));
 
     }
 }
