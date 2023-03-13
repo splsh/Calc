@@ -2,11 +2,17 @@ package com.example.calc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
-//
-
-    public static String calc(String input) {
+/* Я после прошлого раза подумал, что метод должен принимать String так как мне написали такой коммент:
+    Метод должен принимать строку с арифметическим выражением между двумя числами и возвращать строку с результатом их выполнения
+После этого я удалил Scanner и сделал в аттрибуте String. Теперь мне пишут так:
+    Выражение должно считываться с консоли
+Возвращаю сканнер назад. Мне в return нужно sout как то писать или такой вариант должен быть? Метод сейчас возвращает строку.
+Извините, что туплю и тороплюсь, хочется быстрее начать обучение.
+*/
+    public static String calc() {
         boolean roman = false;
         Map<String, Integer> map = new HashMap<>();
         map.put("I", 1);
@@ -19,6 +25,9 @@ public class Main {
         map.put("VIII", 8);
         map.put("IX", 9);
         map.put("X", 10);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input");
+        String input = scanner.nextLine();
         String[] temp = input.split(" ");
         if (temp.length > 3) {
             throw new RuntimeException();
@@ -58,6 +67,7 @@ public class Main {
 
             int onesDigit = result % 10;
             int tensDigit = result / 10;
+
             return tens[tensDigit] + ones[onesDigit];
 
         }
@@ -79,7 +89,6 @@ public class Main {
         String test11 = "9 - 9";
         String test12 = "9 - 10";
         String test13 = "I * I";
-        System.out.println(calc(test13));
-
+        System.out.println(calc());
     }
 }
