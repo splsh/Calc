@@ -83,6 +83,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input");
         String input = scanner.nextLine();
-        System.out.println("Output" + calc(input));
+        System.out.println("Output \n" + calc(input));
     }
 }
